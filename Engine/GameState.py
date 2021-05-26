@@ -73,9 +73,6 @@ class GameState:
         self.current_castling_rights.wqs, self.current_castling_rights.bqs))
 
     def undoMove(self):
-        """
-        Undo the last move
-        """
         if len(self.move_log) != 0:  # make sure that there is a move to undo
             move = self.move_log.pop()
             self.board[move.start_row][move.start_col] = move.piece_moved
@@ -110,9 +107,6 @@ class GameState:
             self.stalemate = False
 
     def updateCastleRights(self, move):
-        """
-        Update the castle rights given the move
-        """
         if move.piece_captured == "wR":
             if move.end_col == 0:  # left rook
                 self.current_castling_rights.wqs = False
@@ -371,8 +365,7 @@ class GameState:
             if self.pins[i][0] == row and self.pins[i][1] == col:
                 piece_pinned = True
                 pin_direction = (self.pins[i][2], self.pins[i][3])
-                if self.board[row][col][
-                    1] != "Q":  # can't remove queen from pin on rook moves, only remove it on bishop moves
+                if self.board[row][col][1] != "Q":  # can't remove queen from pin on rook moves, only remove it on bishop moves
                     self.pins.remove(self.pins[i])
                 break
 
