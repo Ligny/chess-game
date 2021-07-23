@@ -147,7 +147,7 @@ def drawGameState(screen, game_state, valid_moves, square_selected):
 
 def drawBoard(screen):
     global colors
-    colors = [p.Color("white"), p.Color("gray")]
+    colors = [p.Color(235,236,208,255), p.Color(119,149,86,255)]
     for row in range(DIMENSION):
         for column in range(DIMENSION):
             color = colors[((row + column) % 2)]
